@@ -1,0 +1,18 @@
+Package: com.bakphamkhoi.trollnfcviethoa
+Name: TrollNFC VietHoa
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Viet hoa TrollNFC
+Maintainer: bakphamkhoi
+Author: bakphamkhoi
+Section: Tweaks
+Depends: mobilesubstrate
+Package: com.bakphamkhoi.trollnfcviethoa
+Name: TrollNFC VietHoa
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Viet hoa TrollNFC
+Maintainer: bakphamkhoi
+Author: bakphamkhoi
+Section: Tweaks
+Depends: mobilesubstrate
