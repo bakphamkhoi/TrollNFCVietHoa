@@ -1,0 +1,35 @@
+name: Build TrollNFC VietHoa dylib
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install ldid
+
+      - name: Install Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git $HOME/theos
+          echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+          echo "THEOS_MAKE_PATH=$HOME/theos/makefiles" >> $GITHUB_ENV
+
+      - name: Build dylib
+        run: |
+          make
+
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: TrollNFCVietHoa-dylib
+          path: .theos/obj/*.dylib
