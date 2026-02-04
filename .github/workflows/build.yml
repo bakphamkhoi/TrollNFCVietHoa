@@ -1,16 +1,16 @@
-name: Build TrollNFC VietHoa dylib
+name: Build TrollNFCVietHoa dylib
 
 on:
-  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Install dependencies
@@ -26,10 +26,11 @@ jobs:
 
       - name: Build dylib
         run: |
+          make clean || true
           make
 
       - name: Upload dylib
         uses: actions/upload-artifact@v4
         with:
           name: TrollNFCVietHoa-dylib
-          path: .theos/obj/*.dylib
+          path: .theos/obj/debug/*.dylib
